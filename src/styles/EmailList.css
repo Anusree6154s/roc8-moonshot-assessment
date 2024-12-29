@@ -1,11 +1,40 @@
 .EmailList {
+  flex: 1;
+  height: 80vh;
+}
+
+.top-section {
   display: flex;
   flex-direction: column;
   gap: 5%;
+  height: 78vh;
   overflow-y: scroll;
-  height: 80vh;
-  flex: 1;
   scrollbar-width: thin;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.pagination > * {
+  background-color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.pagination > *:hover {
+  border: 1px solid var(--accent);
+}
+
+.pagination-clicked{
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
 }
 
 .email-card {
@@ -19,8 +48,8 @@
   cursor: pointer;
 }
 
-.email-card:hover{
-    border: 1px solid var(--accent);
+.email-card:hover {
+  border: 1px solid var(--accent);
 }
 
 .email-card-read {
@@ -47,6 +76,7 @@
   color: white;
   font-weight: 600;
   font-size: large;
+  margin: 0px;
 }
 
 .EmailList p {

@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
 import "../styles/EmailBody.css";
 
-export default function EmailBody({
-  selectedEmail,
-  setData,
-}: {
-  selectedEmail: any;
-  setData: any;
-}) {
+export default function EmailBody(props: any) {
+  const { selectedEmail, setData } = props;
   const [emailBody, setEmailBody] = useState<string | null>(null);
 
   useEffect(() => {
@@ -41,29 +36,26 @@ export default function EmailBody({
     <>
       {selectedEmail !== null && (
         <section className="email-body">
-          <span className="img">{selectedEmail.initial}</span>
-          <div className="email-body-content">
-            <div className="email-body-header">
+          <figure className="img">{selectedEmail.initial}</figure>
+          <article className="email-body-content">
+            <header className="email-body-header">
               <div>
-                <p className="email-body-title">{selectedEmail.subject}</p>
-                <p>
+                <h1 className="email-body-title">{selectedEmail.subject}</h1>
+                <time dateTime={`${selectedEmail.date}T${selectedEmail.time}`}>
                   {selectedEmail.date} {selectedEmail.time}
-                </p>
+                </time>
               </div>
-              <span
-                className="favorite-button"
-                onClick={handleFavorite}
-              >
+              <button className="favorite-button" onClick={handleFavorite}>
                 Mark as favorite
-              </span>
-            </div>
+              </button>
+            </header>
             {emailBody !== null && (
-              <div
+              <section
                 dangerouslySetInnerHTML={{ __html: emailBody }}
                 className="email-body-text"
               />
             )}
-          </div>
+          </article>
         </section>
       )}
     </>
