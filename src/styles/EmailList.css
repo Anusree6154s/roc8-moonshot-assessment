@@ -1,0 +1,10 @@
+.email-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  border-radius: 50px;
+  width: 1%;
+  height: 1%;
+}
