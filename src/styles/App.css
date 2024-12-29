@@ -1,9 +1,10 @@
 .App {
   /* text-align: center; */
-  padding: 2%;
-  background-color: #f4f5f9;
+  padding: 2% 5%;
+ 
   display: flex;
-  gap: 2%;
+  flex-direction: column;
+  gap: 1em;
 }
 .Content{
   display: flex;

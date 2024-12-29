@@ -6,25 +6,55 @@ import Header from "./components/Header";
 import "./styles/App.css";
 
 function App() {
-  const [selectedEmailId, setSelectedEmailId] = useState(0);
-  const [data, setData] = useState([]);
+  const [selectedEmail, setSelectedEmail] = useState(null);
+  const [data, setData] = useState<Array<any>>([]);
+  const [filter, setFilter] = useState({
+    unread: false,
+    read: false,
+    favorite: false,
+  });
 
   useEffect(() => {
-    const fetchEmails = async () => {
-      const emailData = await fetchData();
-      setData(emailData.list);
-      // console.log(emailData);
-    };
+    const localStorageDataString: string | null = localStorage.getItem("data");
 
-    fetchEmails();
+    if (localStorageDataString) {
+      setData(JSON.parse(localStorageDataString));
+    } else {
+      const fetchEmails = async () => {
+        const emailData = await fetchData();
+        console.log(emailData.list);
+        const data = emailData.list.map((email: any) => ({
+          read: false,
+          favorite: false,
+          ...email,
+        }));
+        localStorage.setItem("data", JSON.stringify(data));
+        setData(emailData.list);
+        // console.log(emailData);
+      };
+
+      fetchEmails();
+    }
   }, []);
 
   return (
     <div className="App">
-      <Header />
-      <main className="Content">
-        <EmailList setSelectedEmailId={setSelectedEmailId} data={data} />
-        <EmailBody selectedEmailId={selectedEmailId} />
+      <Header
+        filter={filter}
+        setFilter={setFilter}
+        setSelectedEmail={setSelectedEmail}
+      />
+      <main
+        className="Content"
+        style={{ display: selectedEmail !== null ? "flex" : "block" }}
+      >
+        <EmailList
+          setSelectedEmail={setSelectedEmail}
+          setData={setData}
+          data={data}
+          filter={filter}
+        />
+        <EmailBody selectedEmail={selectedEmail} setData={setData} />
       </main>
     </div>
   );
