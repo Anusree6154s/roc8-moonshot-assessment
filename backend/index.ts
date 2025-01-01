@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://roc8-moonshot-assessment-frontend.vercel.app/",
+      "https://roc8-moonshot-assessment-frontend.vercel.app",
     ],
   })
 );
