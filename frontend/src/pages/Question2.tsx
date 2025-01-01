@@ -14,8 +14,8 @@ import { useEffect, useRef, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLocation, useNavigate } from "react-router";
 import { backendUrl, frontendUrl } from "../config/constants";
+import "../styles/question2/Question2Share.css";
 
 ChartJS.register(
   CategoryScale,
@@ -217,29 +217,9 @@ export default function Question2() {
   }
 
   return (
-    <section
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "15vh",
-        margin: "20px",
-        height: "70vh",
-      }}
-    >
-      <section
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "20px",
-          }}
-        >
+    <section className="container">
+      <section className="buttons">
+        <div className="filters">
           <span style={{ fontSize: "13px" }}>Filter By: </span>
           <fieldset
             style={{
@@ -438,18 +418,12 @@ export default function Question2() {
       </section>
 
       <section
-        style={{
-          display: "flex",
-          gap: "50px",
-          width: "95vw",
-          height: "80vh",
-          justifyContent: "center",
-        }}
+        className="charts"
       >
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1 }} className="bar-chart">
           {data && <Bar options={options} data={data} />}
         </div>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1 }} className="line-chart">
           {lineChartData && (
             <Line options={lineChartOptions} data={lineChartData} />
           )}

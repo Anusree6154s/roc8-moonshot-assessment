@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15vh;
+  margin: 20px;
+  height: 70vh;
+}
+.charts {
+  display: flex;
+  gap: 50px;
+  width: 95vw;
+  height: 80vh;
+  justify-content: center;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: 100%;
+  }
+
+  .charts {
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bar-chart > *,
+  .line-chart > * {
+    width: 90vw !important;
+    height: 40vh !important;
+    aspect-ratio: auto !important;
+  }
+}
