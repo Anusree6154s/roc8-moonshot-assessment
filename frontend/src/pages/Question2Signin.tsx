@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { backendUrl } from "../config/constants";
 import { enqueueSnackbar, SnackbarProvider } from "notistack";
 
-export default function Question2Signup() {
+export default function Question2Signin() {
   const navigate = useNavigate();
   const tokenString = localStorage.getItem("token");
 
@@ -29,40 +29,13 @@ export default function Question2Signup() {
     }
   }
 
-  const validateInput = (e: any) => {
-    const username = e.target.elements["username"].value;
-    const password = e.target.elements["password"].value;
-    const confirmPassword = e.target.elements["confirmPassword"].value;
-
-    const error = (message: string) => {
-      enqueueSnackbar(message, { variant: "error" });
-      return false;
-    };
-
-    if (!username) return error("Username is required");
-    if (!password) return error("Password is required");
-    if (password.length < 8)
-      return error("Password must be minimum 8 characters long");
-    if (!password.match(/\d/))
-      return error("Password must include atleast one number");
-    if (!password.match(/[a-zA-Z]/))
-      return error("Password must include atleast one letter");
-    if (!confirmPassword) return error("Confirm password is required");
-    if (confirmPassword !== password)
-      return error("Confirm password must match passsword");
-
-    return true;
-  };
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (!validateInput(e)) return;
-
     try {
       const { username, password } = e.target.elements;
-      console.log(username.value, password.value);
-      const res = await fetch(backendUrl + "/question2/signup", {
+
+      const res = await fetch(backendUrl + "/question2/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -70,16 +43,16 @@ export default function Question2Signup() {
           password: password.value,
         }),
       });
+
       if (res.ok) {
         const data = await res.json();
-
-        if (res.status === 209)
-          return enqueueSnackbar(data.message, { variant: "warning" });
-
         localStorage.setItem("token", JSON.stringify(data.data.token));
         navigate("/question2/share");
       } else {
         const error = await res.json();
+        if (res.status !== 500) {
+          enqueueSnackbar(error.message, { variant: "error" });
+        }
         console.error("Frontend error signing in:", error);
       }
     } catch (error) {
@@ -102,7 +75,7 @@ export default function Question2Signup() {
         padding: "20px 40px",
       }}
     >
-      <h1>Sign Up</h1>
+      <h1>Sign In</h1>
 
       <form
         style={{ display: "flex", flexDirection: "column", gap: "10px" }}
@@ -123,26 +96,8 @@ export default function Question2Signup() {
           />
         </fieldset>
 
-        <div>
-          <fieldset style={{ padding: "0px" }}>
-            <legend>Password</legend>
-            <input
-              type="password"
-              style={{
-                outline: "none",
-                border: "none",
-                width: "100%",
-                padding: "7px",
-                background: "transparent",
-              }}
-              name="password"
-            />
-          </fieldset>
-          <span>Minimum 8 letters including one letter and one number</span>
-        </div>
-
         <fieldset style={{ padding: "0px" }}>
-          <legend>Confirm Password</legend>
+          <legend>Password</legend>
           <input
             type="password"
             style={{
@@ -152,9 +107,10 @@ export default function Question2Signup() {
               padding: "7px",
               background: "transparent",
             }}
-            name="confirmPassword"
+            name="password"
           />
         </fieldset>
+
         <button
           type="submit"
           style={{
@@ -167,11 +123,11 @@ export default function Question2Signup() {
             cursor: "pointer",
           }}
         >
-          Sign up
+          Sign in
         </button>
       </form>
       <p>
-        Already Registered?{" "}
+        Not Registered?{" "}
         <button
           style={{
             color: "var(--accent)",
@@ -180,14 +136,14 @@ export default function Question2Signup() {
             fontSize: "12px",
             cursor: "pointer",
           }}
-          onClick={() => navigate("/question2/signin")}
+          onClick={() => navigate("/question2/signup")}
         >
-          Sign In
+          Sign Up
         </button>
       </p>
       <SnackbarProvider
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         maxSnack={1}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       />
     </div>
   );

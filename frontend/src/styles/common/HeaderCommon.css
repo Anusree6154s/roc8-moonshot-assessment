@@ -1,0 +1,24 @@
+.header-common {
+  background: white;
+  display: flex;
+  /* justify-content: space-between; */
+  margin: 0px;
+  gap: 0px;
+}
+
+.header-common > *:hover {
+  cursor: pointer;
+  border: 1px solid var(--accent);
+}
+
+.header-common > * {
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+  margin: 0px;
+}
+
+.header-common .active{
+    font-weight: bold;
+    background-color: var(--background);
+}

@@ -1,0 +1,107 @@
+.EmailList {
+  flex: 1;
+  /* height: 40vh; */
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  height: 68vh;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.pagination > * {
+  background-color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.pagination > *:hover {
+  border: 1px solid var(--accent);
+}
+
+.pagination-clicked{
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
+}
+
+.email-card {
+  display: flex;
+  gap: 4%;
+  background-color: white;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 2% 5%;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.email-card:hover {
+  border: 1px solid var(--accent);
+}
+
+.email-card-read {
+  background-color: var(--read-background);
+}
+
+.email-card-unread {
+  background-color: white;
+}
+
+.email-card-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.img {
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+  color: white;
+  font-weight: 600;
+  font-size: large;
+  margin: 0px;
+}
+
+.EmailList p {
+  margin: 0px;
+  margin-bottom: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.EmailList p:first-child {
+  margin-bottom: 8px;
+}
+
+.EmailList p:last-child {
+  margin-bottom: 0px;
+}
+
+.email-card-content-bold {
+  font-weight: bold;
+}
+
+.email-card-content-favorite {
+  color: var(--accent);
+  background-color: none;
+  font-weight: 600;
+  margin-left: 50px;
+}
