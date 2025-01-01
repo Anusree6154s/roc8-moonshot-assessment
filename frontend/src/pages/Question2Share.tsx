@@ -60,11 +60,13 @@ export default function Question2Share() {
       console.warn("No token found, redirecting to sign-in");
       navigate("/question2/signin");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (!fetchedData || !filter.startDate || !filter.endDate) return;
     updateData(fetchedData, featureName);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   function getFiltersFromURL() {

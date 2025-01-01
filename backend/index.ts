@@ -10,14 +10,17 @@ const app: Application = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: [
+      "http://localhost:3000",
+      "https://roc8-moonshot-assessment-frontend.vercel.app/",
+    ],
   })
 );
 app.use("/", routes);
 
 if (!mongodb_uri) {
   console.error("MongoDB URI is not defined in environment variables.");
-  process.exit(1); 
+  process.exit(1);
 }
 
 mongoose

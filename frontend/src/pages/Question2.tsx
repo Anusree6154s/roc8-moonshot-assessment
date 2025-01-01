@@ -50,11 +50,13 @@ export default function Question2() {
         setFetchedData(resData);
         updateData(resData);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (!fetchedData || !filter.startDate || !filter.endDate) return;
     updateData(fetchedData, featureName);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   const formatDate = (dateString: any) => {
