@@ -7,7 +7,6 @@ import { mongodb_uri } from "./config/constants";
 
 const app: Application = express();
 
-app.use(express.json());
 app.use(
   cors({
     origin: [
@@ -16,6 +15,7 @@ app.use(
     ],
   })
 );
+app.use(express.json());
 app.use("/", routes);
 
 if (!mongodb_uri) {

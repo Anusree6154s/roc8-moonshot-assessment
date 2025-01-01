@@ -76,7 +76,6 @@ export default function EmailList(props: any) {
             if (filter.favorite)
               displayStyle = `${email.favorite === true ? "flex" : "none"}`;
 
-            console.log(displayStyle);
             return (
               <article
                 className={`email-card ${
