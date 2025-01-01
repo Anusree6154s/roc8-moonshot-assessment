@@ -1,12 +1,12 @@
-const express = require("express");
-const {
+import { Router } from "express";
+import {
   getData,
   signup,
   checkauth,
   signin,
-} = require("../controllers/user.controller");
+} from "../controllers/user.controller";
 
-const routes = express.Router()
+const routes = Router();
 
 routes
   .get("/getData", getData)
@@ -14,4 +14,4 @@ routes
   .post("/question2/checkauth", checkauth)
   .post("/question2/signin", signin);
 
-  module.exports = routes
+export default routes;
