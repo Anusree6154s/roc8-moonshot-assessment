@@ -1,6 +1,7 @@
 ## Roc8 Moonshot Assessment
 
 ### Demo
+![Media1-VEED](https://github.com/user-attachments/assets/63af5c01-b8f3-42c1-9756-9fdaba1a82f1)
 
 ### TechStack
 
