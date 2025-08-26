@@ -1,5 +1,4 @@
 // export const backendUrl = 'http://localhost:8000'
-export const backendUrl = "https://roc8-moonshot-assessment.onrender.com";
+export const backendUrl = process.env.REACT_APP_BACKEND_URL;
 // export const frontendUrl = "http://localhost:3000";
-export const frontendUrl =
-  "https://roc8-moonshot-assessment-frontend.vercel.app";
+export const frontendUrl =process.env.REACT_APP_FRONTEND_URL;
