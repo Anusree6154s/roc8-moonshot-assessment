@@ -4,7 +4,6 @@ export const fetchData = async () => {
   try {
     const res = await fetch('https://flipkart-email-mock.now.sh/');
     const data = await res.json();
-    console.log(data)
     return data;
   } catch (error) {
     console.error("Error fetching data: ", error);

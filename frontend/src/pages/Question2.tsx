@@ -107,7 +107,6 @@ export default function Question2() {
 
     setFeatureName(feature);
     const featureIndex = features.findIndex((item: any) => item === feature);
-    console.log(featureIndex);
     updateLineChart(featureIndex, filteredData);
   };
 

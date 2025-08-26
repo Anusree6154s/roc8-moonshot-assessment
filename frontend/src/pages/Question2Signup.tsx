@@ -61,7 +61,6 @@ export default function Question2Signup() {
 
     try {
       const { username, password } = e.target.elements;
-      console.log(username.value, password.value);
       const res = await fetch(backendUrl + "/question2/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

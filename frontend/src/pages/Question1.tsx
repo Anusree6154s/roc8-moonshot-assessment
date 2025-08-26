@@ -22,7 +22,6 @@ function Question1() {
     } else {
       const fetchEmails = async () => {
         const emailData = await fetchData();
-        console.log(emailData.list);
         const data = emailData.list.map((email: any) => ({
           read: false,
           favorite: false,
@@ -30,7 +29,6 @@ function Question1() {
         }));
         localStorage.setItem("data", JSON.stringify(data));
         setData(emailData.list);
-        // console.log(emailData);
       };
 
       fetchEmails();
